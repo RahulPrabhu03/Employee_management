@@ -1,0 +1,78 @@
+{% include 'header.html' %}
+{% load static %}
+{% block title %}
+    <title>Admin login</title>
+{% endblock%}
+<head>
+<link rel="stylesheet" href="{% static 'css/mystyle.css'%}">
+</head>
+<body>
+
+
+    <div class="card-body">
+        <center><h5 class="p-5" >Admin Login</h5></center>
+            <div class="container-fluid">
+                <form method="POST" >
+                    {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label> Admin ID </label>
+                                    <input type="text" name="username" class="form-control" placeholder="Enter your ID"   required>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="form-row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control" placeholder="Enter your password"  required />
+                        
+                            </div>
+                        </div>
+                    </div>
+                        
+                        
+                        
+                        
+                    <div class="form-row">
+                        <div class="col-sm-4"></div>
+                         <div class="col-sm-4">                         
+                
+                            <input type="submit" value="Login" class="m-2 px-3 btn btn-primary">
+                            <br>
+                            <br>
+                            <a href="{% url 'home' %}" class="text-primary"> Go back to home page </a>
+                            
+                       </div>
+                    </div>
+            
+       
+                 </form>
+     
+            </div>
+
+
+    </div>
+
+
+</body>
+{% if error == "yes" %}
+<script>
+alert('Invalid Admin ID or password ,Try again ...');
+</script>
+{%endif%}
+
+{% if error  == "no" %}
+<script>
+alert('Login Successfull ');
+window.location=('{% url 'index' %}');
+        
+</script>
+{% endif %}
+
+
+
